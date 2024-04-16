@@ -11,83 +11,23 @@ export default function Home() {
 
   const [tempBuild, setTempBuild] = useState<Cell[][]>([[]])
 
+  const gridSample = Array.from(Array(20)).map((_, i) => {
+    Array.from(Array(3)).map((_, j) => {
+      if (i === 3 && j === 2) {
+        return {
+          buildType: "arrosto"
+        } as Cell
+      }
+
+      return {} as Cell
+    })
+  })
   useEffect(() => {
     const newCell = {}
     const exampleCell={
       buildType: "arrosto"
     }
-    setGrid([
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, exampleCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-      [newCell, newCell, newCell],
-
-    ])
+    setGrid([...gridSample]);
   }, [setGrid])
 
   return (
