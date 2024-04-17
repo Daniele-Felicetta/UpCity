@@ -19,8 +19,7 @@ export default function RootLayout({
       <body style={{
           background: "linear-gradient(to right, rgba(51, 51, 51, 0.6), rgba(107, 91, 149, 0.6)) no-repeat",
           backgroundSize: "cover",
-          height:"100vh"
-
+          height:"100hv"
         }}
       >
         {children}

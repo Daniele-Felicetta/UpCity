@@ -11,8 +11,8 @@ export default function Home() {
 
   const [tempBuild, setTempBuild] = useState<Cell[][]>([[]])
 
-  const gridSample = Array.from(Array(20)).map((_, i) => {
-    Array.from(Array(3)).map((_, j) => {
+  const gridSample = Array.from(Array(40)).map((_, i) => {
+    return Array.from(Array(3)).map((_, j) => {
       if (i === 3 && j === 2) {
         return {
           buildType: "arrosto"
@@ -51,7 +51,6 @@ export default function Home() {
                   border: cell.buildType ? "2px solid black": "1px dashed white",
                   justifyContent: "space-between",
                   alignItems: "center",
-
                   paddingY:3
                 }}
               >
