@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 
 export type Cell = Readonly<Partial<{
-  cellId: number,
+  cellId: string,
   unlocked: boolean,
   buildType: string,
   buildLevel: number,

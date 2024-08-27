@@ -18,8 +18,9 @@ export default function Home() {
           buildType: "arrosto"
         } as Cell
       }
-
-      return {} as Cell
+      return {
+        cellId: ``
+      } as Cell
     })
   })
   useEffect(() => {
