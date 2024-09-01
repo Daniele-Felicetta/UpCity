@@ -1,5 +1,5 @@
 import { Box, Stack } from "@mui/material";
-import { Cell } from "../../lib/store/useGrid";
+import { Cell } from "../../../lib/store/useGrid";
 
 export default function BuildMenu({ cell }: { cell: Cell }) {
   if (cell) {
