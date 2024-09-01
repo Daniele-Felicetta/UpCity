@@ -10,22 +10,21 @@ type BuildPageProps = {
   readonly children?: React.ReactNode
 }
 
-export default function Build(props: {
-  cell: Cell,
-  children?: React.ReactNode
-}) {
+export default function Build({cell, children}:BuildPageProps) {
   const router = useRouter();
+
+  console.log(cell)
 
   return (
     <>
-      {props.cell}
+      {/* {cell} */}
       {/* Quello che scrivo da dentro page*/}
-      {props.children}
+      {children}
       <Button
-        onClick={() => router.push(`/build-menu/${props.cell.cellId}`)}
+        onClick={() => router.push(`/build-menu/${cell.cellId}`)}
       >
-        {props.cell.build?.buildType ?? "Build"}
-        {props.cell.type ?? 'ERROR'}
+        {cell.build?.buildType ?? "Build"}
+        {cell.type ?? 'ERROR'}
       </Button>
     </>
   )

@@ -14,18 +14,20 @@ export default function GridController() {
   const gridSample: Cell[][] = Array.from(Array(40)).map((_, i) => {
     return Array.from(Array(3)).map((_, j) => {
       if (i === 3 && j === 2) {
-        const cell: Cell = {
-          cellId: `${i}-${j}`,
+        const myType = "Home"
+        const myCell: Cell = {
+          cellId: `${i}-${j}-${myType}`,
           build: {
-            buildType: "Home"
+            buildType: myType
           },
-          type: 'Home'
+          type: myType
         }
-        return cell;
+        return myCell;
       }
+      const defaultType = "empty"
       return {
-        cellId: `${i}-${j}`,
-        type: 'empty'
+        cellId: `${i}-${j}-${defaultType}`,
+        type: defaultType
       }
     })
   })
