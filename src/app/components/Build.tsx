@@ -17,15 +17,9 @@ export default function Build({cell, children}:BuildPageProps) {
 
   return (
     <>
-      {/* {cell} */}
-      {/* Quello che scrivo da dentro page*/}
+      
       {children}
-      <Button
-        onClick={() => router.push(`/build-menu/${cell.cellId}`)}
-      >
-        {cell.build?.buildType ?? "Build"}
-        {cell.type ?? 'ERROR'}
-      </Button>
+      
     </>
   )
 }

@@ -12,12 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it">
-      <body style={{
-          background: "linear-gradient(to right, rgba(51, 51, 51, 0.6), rgba(107, 91, 149, 0.6)) no-repeat",
-          backgroundSize: "cover",
-          height:"100hv"
-        }}
-      >
+      <body>
         {children}
       </body>
     </html >

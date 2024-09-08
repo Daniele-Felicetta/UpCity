@@ -4,6 +4,7 @@ import { Box, Stack } from "@mui/material";
 import { Cell, useGrid } from "@/lib/store/useGrid";
 import { useEffect, useState } from "react";
 import Build from "@/app/components/Build";
+import CellBase from "../Cells/CellBase";
 
 export default function GridController() {
 
@@ -14,7 +15,7 @@ export default function GridController() {
   const gridSample: Cell[][] = Array.from(Array(40)).map((_, i) => {
     return Array.from(Array(3)).map((_, j) => {
       if (i === 3 && j === 2) {
-        const myType = "Home"
+        const myType = "build"
         const myCell: Cell = {
           cellId: `${i}-${j}-${myType}`,
           build: {
@@ -43,36 +44,32 @@ export default function GridController() {
 
   return (
     <Stack>
-      <Stack>
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(12, 1fr)",
-            rowGap: 5,
-            columnGap: 1
-          }}
-        >
-          {gameGrid.map((row, rowIndex) =>
-            row.map((cell, cellIndex) => (
-              <Stack
-                key={`${rowIndex}-${cellIndex}`}
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  border: cell.build?.buildType ? "2px solid black" : "1px dashed white",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  paddingY: 3
-                }}
+      <Stack
+        direction='row'
+        flexWrap='wrap'
+        justifyContent='center'
+        paddingX={1}
+      >
+        {gameGrid.map((row, rowIndex) =>
+          row.map((cell, cellIndex) =>
+            <Stack
+              key={`${rowIndex}-${cellIndex}`}
+              sx={{
+                maxHeight: 200,
+                maxWidth: 200,
+                minHeight: 100,
+                minWidth: 100,
+                width: 50,
+                height: 50,
+                padding:1
+              }}
+            >
+              <CellBase
+                cell={cell}
               >
-                <Build cell={cell}>
-                  {cell.build?.buildType ?? ''}
-                </Build>
-              </Stack>
-            ))
-          )}
-
-        </Box>
+              </CellBase>
+            </Stack>
+          ))}
       </Stack>
     </Stack>
   );
