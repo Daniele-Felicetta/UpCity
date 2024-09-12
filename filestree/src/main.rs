@@ -12,6 +12,7 @@ struct TreeNode {
     name: String,
     is_dir: bool,
     children: Option<Vec<TreeNode>>, // None if it's a file, Some(Vec) if it's a directory
+   
 }
 
 impl TreeNode {
@@ -123,3 +124,102 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+
+
+/* 
+/// Builds a file tree structure starting from the given path.
+///
+/// This function recursively traverses the directory structure starting from the provided path,
+/// creating a tree-like representation of the file system. It includes both files and directories
+/// in the tree.
+///
+/// # Arguments
+///
+/// * `path` - A `&Path` representing the root directory from which to start building the tree.
+///
+/// # Returns
+///
+/// Returns a `Result` containing a `FileNode` representing the root of the tree if successful,
+/// or a `BuildTreeError` if an error occurs during the process.
+///
+/// # Errors
+///
+/// This function will return an error if:
+/// * The provided path is invalid or inaccessible.
+/// * There are permission issues when reading directory contents.
+/// * Any I/O error occurs during the file system traversal.
+///
+/// # Example
+///
+/// ```
+/// use std::path::Path;
+///
+/// let path = Path::new("/path/to/directory");
+/// match build_tree(path) {
+///     Ok(tree) => println!("Tree built successfully: {:?}", tree),
+///     Err(e) => eprintln!("Error building tree: {}", e),
+/// }
+/// ```
+fn build_tree(path: &Path) -> Result<FileNode, BuildTreeError> {
+    // Implementation details...
+}
+
+/// Serializes a FileNode tree structure into a JSON string.
+///
+/// This function takes a `FileNode` representing the root of a file tree and converts it
+/// into a JSON string representation. This is useful for storing the tree structure or
+/// transmitting it over network protocols.
+///
+/// # Arguments
+///
+/// * `tree` - A reference to the `FileNode` representing the root of the tree to be serialized.
+///
+/// # Returns
+///
+/// Returns a `String` containing the JSON representation of the tree.
+///
+/// # Example
+///
+/// ```
+/// let tree = FileNode::new("root", true);
+/// let json = serialize_tree_to_json(&tree);
+/// println!("JSON representation: {}", json);
+/// ```
+fn serialize_tree_to_json(tree: &FileNode) -> String {
+    // Implementation details...
+}
+
+/// Writes a JSON string to a file.
+///
+/// This function takes a JSON string and writes it to a file at the specified path.
+/// If the file already exists, it will be overwritten.
+///
+/// # Arguments
+///
+/// * `json` - A string slice containing the JSON data to be written.
+/// * `output_path` - A string slice specifying the path where the file should be written.
+///
+/// # Returns
+///
+/// Returns a `Result` indicating success or failure of the write operation.
+///
+/// # Errors
+///
+/// This function will return an error if:
+/// * The file cannot be created or opened for writing.
+/// * There are permission issues when writing to the file.
+/// * Any I/O error occurs during the write operation.
+///
+/// # Example
+///
+/// ```
+/// let json = r#"{"key": "value"}"#;
+/// match write_json_to_file(json, "output.json") {
+///     Ok(_) => println!("JSON written successfully"),
+///     Err(e) => eprintln!("Error writing JSON: {}", e),
+/// }
+/// ```
+fn write_json_to_file(json: &str, output_path: &str) -> Result<(), std::io::Error> {
+    // Implementation details...
+}
+ */

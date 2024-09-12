@@ -12,6 +12,7 @@ export default function GridController() {
 
   const [tempBuild, setTempBuild] = useState<Cell[][]>([[]])
 
+  
   const gridSample: Cell[][] = Array.from(Array(40)).map((_, i) => {
     return Array.from(Array(3)).map((_, j) => {
       if (i === 3 && j === 2) {
@@ -74,3 +75,40 @@ export default function GridController() {
     </Stack>
   );
 }
+
+/**
+ * GridController Component
+ * 
+ * This component is responsible for rendering and managing the game grid.
+ * It uses the useGrid hook to access and update the game state.
+ * 
+ * Key features:
+ * - Initializes a sample grid with empty cells
+ * - Uses useEffect to set the initial grid state
+ * - Renders a grid of CellBase components
+ * 
+ * @component
+ * @returns {JSX.Element} A Stack component containing the game grid
+ */
+/**
+   * GridController Component
+   * 
+   * This component manages the game grid and handles the rendering of cells.
+   * 
+   * State:
+   * - gameGrid: The current state of the game grid, managed by useGrid hook.
+   * - tempBuild: A temporary state for building operations (currently not used).
+   * 
+   * Functions:
+   * - setGrid: Function to update the game grid, provided by useGrid hook.
+   * 
+   * Grid Generation:
+   * - gridSample: A 40x3 grid of cells, with a special "build" cell at position [3][2].
+   * 
+   * Effects:
+   * - On component mount, initializes the grid with the gridSample.
+   * 
+   * Rendering:
+   * - Displays the grid as a series of stacked rows.
+   * - Each cell is rendered using the CellBase component.
+   */
