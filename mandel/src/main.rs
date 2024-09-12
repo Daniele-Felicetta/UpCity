@@ -43,6 +43,7 @@ fn hsv_to_rgb(h: f64, s: f64, v: f64) -> Rgb<u8> {
     let x = c * (1.0 - ((h / 60.0) % 2.0 - 1.0).abs());
     let m = v - c;
 
+    
     let (r, g, b) = match h as u32 {
         0..=59 => (c, x, 0.0),
         60..=119 => (x, c, 0.0),

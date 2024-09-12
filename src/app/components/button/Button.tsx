@@ -1,6 +1,5 @@
-import { Box, ButtonBaseProps } from "@mui/material";
-import Image from "next/image";
-import React from "react"
+import { Button as MuiButton, ButtonBaseProps, ButtonBase } from "@mui/material";
+import React, { useMemo, useState } from "react";
 import { getButtonSx } from "./getButtonSx";
 
 type ButtonProps = {
@@ -8,26 +7,36 @@ type ButtonProps = {
   readonly hover?: boolean;
   readonly disabled?: boolean;
   readonly color?: "blue" | "yellow" | "red";
-} & ButtonBaseProps
+  readonly width?: number | string;
+  readonly height?: number | string;
+} & ButtonBaseProps;
 
-export default function Button({ variant = "normal", hover, disabled, color }: ButtonProps) {
-  const imageSrc = getButtonSx({
-    variant,
+export default function Button({ variant = "normal", hover, disabled, color, width, height }: ButtonProps) {
+  // Usa useMemo per memorizzare il valore di imageSrc
+  console.log("Button render");
+  const [buttonHover, setButtonHover] = useState(false);
+  const imageSrc = ({ variant, hover, disabled, color }:ButtonProps) => getButtonSx({
+    variant: variant ?? "normal",
     hover: hover ?? false,
     disabled: disabled ?? false,
-    color: color ?? "blue"
-  });
-
+    color: color ?? "blue",
+  })
+  console.log(imageSrc({ variant, hover: buttonHover, disabled, color }))
   return (
-    <Box
-      position="relative"
+    <ButtonBase
+      onMouseEnter={() => setButtonHover(true)}
+      onMouseLeave={() => setButtonHover(false)}
+      sx={{
+        backgroundImage: `url(${imageSrc({ variant, hover: buttonHover, disabled, color })})`,
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        transformOrigin: "center",
+        backgroundPosition: "center",
+        width: width ?? 50,
+        height: width ?? 50,
+      }}
+      disabled={disabled}
     >
-      <Image
-        src={imageSrc}
-        alt={`${variant} button`}
-        width={variant === "big" ? 270 : 90}
-        height={variant === "big" ? 90 : 30}
-      />
-    </Box>
+    </ButtonBase>
   );
 }

@@ -12,7 +12,6 @@ struct TreeNode {
     name: String,
     is_dir: bool,
     children: Option<Vec<TreeNode>>, // None if it's a file, Some(Vec) if it's a directory
-   
 }
 
 impl TreeNode {

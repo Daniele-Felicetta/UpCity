@@ -12,9 +12,26 @@ type BuildProps = {
 export default function Build({ cell }: BuildProps) {
   const router = useRouter();
   return (
-    <CellLayout cell={cell}>
+    <CellLayout 
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        borderRadius: '10px',
+        color: 'white',
+        fontSize: '1.5rem',
+        margin: 1
+      }}
+      cell={cell}
+    
+    >
       <Button
         onClick={() => router.push(`/build-menu/${cell.cellId}`)}
+        variant="normal"
+        color="yellow"
       >
         {cell.build?.buildType ?? "Build"}
         {cell.type ?? 'ERROR'}
