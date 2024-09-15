@@ -3,15 +3,21 @@ import React from 'react'
 import Empty from './components/Empty';
 import Home from './components/Home';
 import Build from './components/Build';
-import { Box } from '@mui/material';
-
+import { Box, ButtonBase, Stack, Typography } from '@mui/material';
+import Button from '../button/Button';
+import { useRouter } from 'next/navigation';
 
 type CellBaseProps = {
 	readonly cell: Cell
+	readonly children: React.ReactNode
+	readonly button?: boolean
+	readonly onClick?: () => void
 }
 
+export default function CellBase({ cell, children, button, onClick }: CellBaseProps) {
+	const router = useRouter()
 
-export default function CellBase({ cell }: CellBaseProps) {
+
 	const cellType = cell.type as keyof typeof cellDictionary
 
 	const cellDictionary = {
@@ -20,11 +26,11 @@ export default function CellBase({ cell }: CellBaseProps) {
 		"Home": <Home cell={cell} />
 	}
 
-
 	return (
-		<Box
+		<Stack
+			component={button ? ButtonBase : Stack}
+			onClick={() => onClick ? onClick() : router.push(`/${cell.cellId}`)}
 			sx={{
-				display: 'flex',
 				justifyContent: 'center',
 				alignItems: 'center',
 				width: '100%',
@@ -35,8 +41,11 @@ export default function CellBase({ cell }: CellBaseProps) {
 				fontSize: '1.5rem',
 			}}
 		>
-			{cellDictionary[cellType]
-				?? cellDictionary.empty}
-		</Box>
+			<Typography
+			>
+				{cell.build && 'Entra'}
+			</Typography>
+			{children}
+		</Stack>
 	)
 }

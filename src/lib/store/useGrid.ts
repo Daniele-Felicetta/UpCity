@@ -4,10 +4,12 @@ export type Cell = {
   readonly cellId: string,
   readonly type: string
   readonly build?: Build
+  readonly page?: boolean
+  readonly name: string
 }
 
 type Build = {
-  readonly shop?:Shop,
+  readonly shop?: Shop,
   readonly unlocked?: boolean,
   readonly buildType?: string,
   readonly buildLevel?: number,
@@ -24,7 +26,7 @@ type Build = {
   readonly buildSpecialValue2?: number,
 }
 
-type Shop={
+type Shop = {
   readonly shopId: string,
   readonly shopName: string,
   readonly shopLevel: number,
@@ -32,11 +34,11 @@ type Shop={
 }
 
 type useGridType = {
-  readonly gameGrid:Cell[][],
-  readonly setGrid:(newGrid: Cell[][]) => void
+  readonly gameGrid: Cell[][],
+  readonly setGrid: (newGrid: Cell[][]) => void
 }
 
 export const useGrid = create<useGridType>((set) => ({
   gameGrid: [[]],
-  setGrid: (newGrid:Cell[][]) => set({ gameGrid: newGrid })
+  setGrid: (newGrid: Cell[][]) => set({ gameGrid: newGrid })
 }))

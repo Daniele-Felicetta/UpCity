@@ -22,7 +22,7 @@ export default function BuildMenu({ params }: BuildMenuProps) {
             console.log(key)
             return (
               <Box key={index}>
-                {key.slice(5)}
+                {key}  
               </Box>
             )
           }

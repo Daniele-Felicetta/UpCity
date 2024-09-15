@@ -1,24 +1,20 @@
 'use client'
 
-import { Box, Stack } from "@mui/material";
 import { Cell, useGrid } from "@/lib/store/useGrid";
-import { useEffect, useState } from "react";
-import Build from "@/app/components/Build";
+import { Stack, Typography } from "@mui/material";
+import { useEffect, } from "react";
 import CellBase from "../Cells/CellBase";
 
 export default function GridController() {
-
   const { gameGrid, setGrid } = useGrid()
-
-  const [tempBuild, setTempBuild] = useState<Cell[][]>([[]])
-
-  
   const gridSample: Cell[][] = Array.from(Array(40)).map((_, i) => {
     return Array.from(Array(3)).map((_, j) => {
-      if (i === 3 && j === 2) {
+      if (i === 0 && j === 0) {
         const myType = "build"
         const myCell: Cell = {
           cellId: `${i}-${j}-${myType}`,
+          page: true,
+          name: 'Torre Capa',
           build: {
             buildType: myType
           },
@@ -29,20 +25,18 @@ export default function GridController() {
       const defaultType = "empty"
       return {
         cellId: `${i}-${j}-${defaultType}`,
-        type: defaultType
+        type: defaultType,
+        name: ''
       }
     })
   })
 
 
   useEffect(() => {
-    const newCell = {}
-    const exampleCell = {
-      buildType: "arrosto"
-    }
     setGrid([...gridSample]);
   }, [setGrid])
 
+  const CELL_SIZE = 1.5
   return (
     <Stack>
       <Stack
@@ -56,18 +50,24 @@ export default function GridController() {
             <Stack
               key={`${rowIndex}-${cellIndex}`}
               sx={{
-                maxHeight: 200,
-                maxWidth: 200,
-                minHeight: 100,
-                minWidth: 100,
-                width: 50,
-                height: 50,
-                padding:1
+                maxHeight: 200 * CELL_SIZE,
+                maxWidth: 200 * CELL_SIZE,
+                minHeight: 100 * CELL_SIZE,
+                minWidth: 100 * CELL_SIZE,
+                width: 50 * CELL_SIZE,
+                height: 50 * CELL_SIZE,
+                padding: 2 * CELL_SIZE
               }}
             >
               <CellBase
                 cell={cell}
+                
               >
+                <Typography
+                  fontSize={20}
+                >
+                  {cell.name}
+                </Typography>
               </CellBase>
             </Stack>
           ))}

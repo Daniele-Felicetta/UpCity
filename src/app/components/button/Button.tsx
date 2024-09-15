@@ -15,12 +15,13 @@ export default function Button({ variant = "normal", hover, disabled, color, wid
   // Usa useMemo per memorizzare il valore di imageSrc
   console.log("Button render");
   const [buttonHover, setButtonHover] = useState(false);
-  const imageSrc = ({ variant, hover, disabled, color }:ButtonProps) => getButtonSx({
-    variant: variant ?? "normal",
-    hover: hover ?? false,
-    disabled: disabled ?? false,
-    color: color ?? "blue",
-  })
+  const imageSrc = ({ variant, hover, disabled, color }: ButtonProps) =>
+    getButtonSx({
+      variant: variant ?? "normal",
+      hover: hover ?? false,
+      disabled: disabled ?? false,
+      color: color ?? "blue",
+    })
   console.log(imageSrc({ variant, hover: buttonHover, disabled, color }))
   return (
     <ButtonBase
