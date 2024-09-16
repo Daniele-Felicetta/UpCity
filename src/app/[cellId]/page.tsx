@@ -1,7 +1,8 @@
 'use client'
 
 import { Box, Stack, Typography } from "@mui/material"
-import { Cell, useGrid } from "../../lib/store/useGrid"
+import { useGrid } from "../../lib/store/useGrid"
+import CellFlow from "../components/Cells/components/CellFlow"
 
 type BuildMenuProps = {
   readonly params: {
@@ -22,12 +23,13 @@ export default function BuildMenu({ params }: BuildMenuProps) {
             console.log(key)
             return (
               <Box key={index}>
-                {key}  
+                {key}
               </Box>
             )
           }
           )}
         </Box>
+        <CellFlow></CellFlow>
       </Stack>
 
     )

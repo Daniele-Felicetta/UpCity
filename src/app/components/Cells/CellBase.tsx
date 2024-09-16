@@ -37,12 +37,11 @@ export default function CellBase({ cell, children, button, onClick }: CellBasePr
 				height: '100%',
 				backgroundColor: 'rgba(0, 0, 0, 0.5)',
 				borderRadius: '10px',
-				color: 'white',
+				color: theme => theme.palette.primary.light,
 				fontSize: '1.5rem',
 			}}
 		>
-			<Typography
-			>
+			<Typography>
 				{cell.build && 'Entra'}
 			</Typography>
 			{children}

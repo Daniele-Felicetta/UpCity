@@ -1,0 +1,57 @@
+{
+  "game": {
+    "players": {
+      "player1": {
+        "id": "player1",
+        "name": "Giocatore 1",
+        "position": {
+          "x": 10,
+          "y": 20
+        },
+        "room": "room1",
+        "floor": 1
+      },
+      "player2": {
+        "id": "player2",
+        "name": "Giocatore 2",
+        "position": {
+          "x": 5,
+          "y": 15
+        },
+        "room": "room2",
+        "floor": 2
+      }
+    },
+    "rooms": {
+      "room1": {
+        "id": "room1",
+        "name": "Stanza principale",
+        "users": [
+          "player1",
+          "player2"
+        ],
+        "chats": [
+          {
+            "sender": "player1",
+            "message": "Ciao!",
+            "timestamp": 1678886400
+          },
+          {
+            "sender": "player2",
+            "message": "Ciao a te!",
+            "timestamp": 1678886410
+          }
+        ],
+        "settings":{
+
+        }
+      },
+      "room2": {
+        "id": "room2",
+        "name": "Stanza segreta",
+        "users": [],
+        "chats": []
+      }
+    }
+  }
+}
