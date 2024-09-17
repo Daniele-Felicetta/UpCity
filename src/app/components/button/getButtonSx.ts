@@ -1,8 +1,8 @@
 type GetButtonSxParams = {
-  variant: "normal" | "large" | "big";
-  hover: boolean;
-  disabled: boolean;
-  color: "blue" | "yellow" | "red";
+  readonly variant: "normal" | "large" | "big";
+  readonly hover: boolean;
+  readonly disabled: boolean;
+  readonly color: "blue" | "yellow" | "red";
 };
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);

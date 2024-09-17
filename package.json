@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.15",
     "@xyflow/react": "^12.3.0",
+    "ccat-api": "^0.11.0",
     "firebase": "^10.13.1",
     "next": "14.1.4",
     "react": "^18",

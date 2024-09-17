@@ -1,44 +1,19 @@
-'use client'
+import { DB } from "../db/abstractions/Db"
+import { getUserData } from "../db/useDb"
+import CellPageClient from "./page-client"
 
-import { Box, Stack, Typography } from "@mui/material"
-import { useGrid } from "../../lib/store/useGrid"
-import CellFlow from "../components/Cells/components/CellFlow"
-
-type BuildMenuProps = {
+type CellPageProps = {
   readonly params: {
     readonly cellId: string
   }
 }
 
-export default function BuildMenu({ params }: BuildMenuProps) {
-  const { gameGrid, setGrid } = useGrid()
-  const cell = gameGrid.flat().find(cell => cell.cellId === params.cellId)
+export default async function CellPage({ params }: CellPageProps) {
+  const db = await getUserData();  // Attendi la risoluzione del Promise
 
-  if (cell) {
-    return (
-      <Stack>
-        Ciaoo
-        <Box>
-          {Object.keys(cell).map((key, index) => {
-            console.log(key)
-            return (
-              <Box key={index}>
-                {key}
-              </Box>
-            )
-          }
-          )}
-        </Box>
-        <CellFlow></CellFlow>
-      </Stack>
-
-    )
+  if (!db || !db.game) {
+    return <div>Errore: Database non trovato o 'game' mancante</div>; // Error handling
   }
-  return (
-    <Stack>
-      <Typography variant="h1">
-        NESSUN MENU
-      </Typography>
-    </Stack>
-  )
+
+  return <CellPageClient db={db} />;
 }
